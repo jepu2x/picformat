@@ -1,74 +1,11 @@
 <!DOCTYPE html>
-<style>
-    html * {
-        color:rgb(0, 39, 39);
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    .everythang {
-        display: flex;
-        margin-top: 25px;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .main-container {
-        display: flex;
-        height: auto;
-        min-height: 750px;
-    }
-
-    .io-boxes {
-        box-shadow:
-            2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
-            6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
-            12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
-            22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
-            41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
-            100px 100px 80px rgba(0, 0, 0, 0.07)
-            ;
-        margin: 10px;
-        border-radius: 5px;
-        padding: 20px;
-        background: whitesmoke;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 750px;
-    }
-
-    textarea {
-        width: 95%;
-        height: 85%;
-        resize: none;
-        outline: none;
-        border-color: rgb(194, 227, 227);
-        border-radius: 5px;
-        font-size: 14px;
-    }
-
-    textarea::-webkit-scrollbar {
-        width: 0px
-    }
-
-    .copy-button {
-        border-radius: 5px;
-        border: none;
-        background: rgb(174, 174, 174);
-        width: 50%;
-        margin: 5%;
-    }
-
-    .paste-text {
-        margin: 5%;
-    }
-</style>
 <html lang="en">
 <head>
     <title>PIC Facebook Format</title>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <link rel="stylesheet" href="style.css">
     <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
 </head>
 <body>
@@ -79,80 +16,11 @@
                 <textarea type="text" id="userInput" placeholder="Paste text here"></textarea>
             </div>
             <div class="io-boxes">
-                <!--<h3 class="paste-text">OUTPUT</h3>
-                <div class="user-output" id="userOutput"></div>-->
                 <button type="button" id="copyButton" class="copy-button" pys-onClick="copy_output">COPY OUTPUT</button>
-                <textarea readonly class="user-output" type="userOutput" id="userOutput" placeholder="Paste text here"></textarea>
+                <textarea readonly class="user-output" type="userOutput" id="userOutput"></textarea>
             </div>
-            <py-script>
-                import re
-                import string
-                from js import document
-                from js import navigator
-                from pyodide import create_proxy
-
-
-                title_letters_set = ''.join([chr(x) for x in range(0x1D5D4, 0x1D607 + 1)])
-                title_ascii_letters = string.ascii_uppercase + string.ascii_lowercase
-                title_trans_table = title_ascii_letters.maketrans(title_ascii_letters, title_letters_set)
-
-                title_numbers_set = {
-                    '0': 0x1D7EC,
-                    '1': 0x1D7ED,
-                    '2': 0x1D7EE,
-                    '3': 0x1D7EF,
-                    '4': 0x1D7F0,
-                    '5': 0x1D7F1,
-                    '6': 0x1D7F2,
-                    '7': 0x1D7F3,
-                    '8': 0x1D7F4,
-                    '9': 0x1D7F5
-                }
-
-
-                def replace_title(text):
-                    title = text.split('\n')[0]
-                    original_title = title
-                    numbers = list(dict.fromkeys(''.join(re.findall(r'\d+', title))))
-                    parsed_title = title.translate(title_trans_table)
-                    for x in numbers:
-                        parsed_title = parsed_title.replace(x, chr(title_numbers_set[x]))
-                    final_output = parsed_title + text.replace(original_title, '')
-                    return final_output
-
-
-                credits_letters_set = ''.join([chr(x) for x in range(0x1D670, 0x1D6A3 + 1)])
-                credits_ascii_letters = string.ascii_uppercase + string.ascii_lowercase
-                credits_trans_table = credits_ascii_letters.maketrans(credits_ascii_letters, credits_letters_set)
-
-
-                def replace_credits(text):
-                    if text.rfind(')') == len(text) - 1:
-                        credits_text = text[text.rfind('('):]
-                        parsed_credits_text = credits_text.translate(credits_trans_table)
-                        final_output = text.replace(credits_text, '') + parsed_credits_text
-                        return final_output
-                    return text
-
-
-                def display_output(*args, **kwargs):
-                    text = str(Element("userInput").element.value).strip()
-                    text = replace_title(text)
-                    text = replace_credits(text)
-                    hashtags = "\n\n#provincialinformationcenterzanorte\n#piczanorteofficial"
-                    result = text + hashtags
-                    Element("userOutput").element.value = result
-                
-
-                def copy_output(*args, **kwargs):
-                    output = str(Element("userOutput").element.value)
-                    navigator.clipboard.writeText(output)
-
-
-                function_proxy = create_proxy(display_output)
-                document.getElementById("userInput").addEventListener("input", function_proxy);
-            </py-script>
         </div>
+        <py-script id="main" src="./main.py"></py-script>
     </div>
 </body>
 </html>
