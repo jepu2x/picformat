@@ -9,6 +9,7 @@ title_letters_set = ''.join([chr(x) for x in range(0x1D5D4, 0x1D607 + 1)])
 title_ascii_letters = string.ascii_uppercase + string.ascii_lowercase
 title_trans_table = title_ascii_letters.maketrans(title_ascii_letters, title_letters_set)
 
+
 title_numbers_set = {
     '0': 0x1D7EC,
     '1': 0x1D7ED,

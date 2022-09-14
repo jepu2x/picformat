@@ -16,11 +16,13 @@
                 <textarea type="text" id="userInput" placeholder="Paste text here"></textarea>
             </div>
             <div class="io-boxes">
-                <button type="button" id="copyButton" class="copy-button" pys-onClick="copy_output">COPY OUTPUT</button>
+                <div class="button-wrapper">
+                    <button type="button" id="copyButton" class="copy-button" pys-onClick="copy_output">COPY OUTPUT</button>
+                </div>
                 <textarea readonly class="user-output" type="userOutput" id="userOutput"></textarea>
             </div>
         </div>
-        <py-script id="main" src="./main.py"></py-script>
     </div>
+    <py-script id="main" src="./main.py"></py-script>
 </body>
 </html>

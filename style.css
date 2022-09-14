@@ -3,6 +3,10 @@ html * {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+body {
+    background-color: #E1BEA8;
+}
+
 .everythang {
     display: flex;
     margin-top: 1%;
@@ -27,7 +31,7 @@ html * {
         ;
     margin: 5px;
     border-radius: 5px;
-    padding: 25;
+    padding: 10px;
     background: whitesmoke;
     display: flex;
     flex-direction: column;
@@ -43,6 +47,7 @@ textarea {
     border-color: rgb(194, 227, 227);
     border-radius: 5px;
     font-size: 14px;
+    padding: 5px;
 }
 
 textarea::-webkit-scrollbar {
@@ -50,14 +55,29 @@ textarea::-webkit-scrollbar {
 }
 
 .copy-button {
+    background: rgb(224, 187, 228);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 2%;
+}
+
+.copy-button:hover {
+    color: white;
+    background: rgb(130, 110, 133);
+}
+
+.button-wrapper {
     border-radius: 5px;
     border: none;
-    background: rgb(224, 187, 228);
     width: 95%;
-    overflow: hidden;
-    margin: 5%;
+    height: 10%;
+    margin: 1%;
 }
 
 .paste-text {
-    margin: 5%;
+    height: 10%;
+    margin: 1%;
 }
