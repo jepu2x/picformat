@@ -4,7 +4,11 @@ html * {
 }
 
 body {
+<<<<<<< HEAD
+    background-color: #716a8c;
+=======
     background-color: #E1BEA8;
+>>>>>>> c8c706cefe9363e9081192ac7c3aecafd8d244c0
 }
 
 .everythang {
@@ -32,7 +36,11 @@ body {
     margin: 5px;
     border-radius: 5px;
     padding: 10px;
+<<<<<<< HEAD
+    background: rgb(228, 228, 228);
+=======
     background: whitesmoke;
+>>>>>>> c8c706cefe9363e9081192ac7c3aecafd8d244c0
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -62,6 +70,10 @@ textarea::-webkit-scrollbar {
     border-radius: 5px;
     overflow: hidden;
     padding: 2%;
+<<<<<<< HEAD
+    font-weight: bold;
+=======
+>>>>>>> c8c706cefe9363e9081192ac7c3aecafd8d244c0
 }
 
 .copy-button:hover {
@@ -69,6 +81,14 @@ textarea::-webkit-scrollbar {
     background: rgb(130, 110, 133);
 }
 
+<<<<<<< HEAD
+.copy-button:active {
+    background: rgb(224, 187, 228);
+    color: black;
+}
+
+=======
+>>>>>>> c8c706cefe9363e9081192ac7c3aecafd8d244c0
 .button-wrapper {
     border-radius: 5px;
     border: none;
@@ -80,4 +100,8 @@ textarea::-webkit-scrollbar {
 .paste-text {
     height: 10%;
     margin: 1%;
+<<<<<<< HEAD
+    font-weight: bold;
+=======
+>>>>>>> c8c706cefe9363e9081192ac7c3aecafd8d244c0
 }
