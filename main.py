@@ -1,5 +1,6 @@
 import re
 import string
+import time
 from js import document
 from js import navigator
 from pyodide import create_proxy
@@ -56,11 +57,15 @@ def display_output(*args, **kwargs):
     text = replace_credits(text)
     result = text + hashtags
     Element("userOutput").element.value = result
+    Element("copyButton").element.innerText = "COPY OUTPUT"
+
 
 
 def copy_output(*args, **kwargs):
     output = str(Element("userOutput").element.value)
     navigator.clipboard.writeText(output)
+    Element("copyButton").element.innerText = "COPIED!"
+
 
 
 Element("userOutput").element.value = hashtags
